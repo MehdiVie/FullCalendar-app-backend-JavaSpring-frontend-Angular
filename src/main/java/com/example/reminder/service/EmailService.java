@@ -1,10 +1,16 @@
 package com.example.reminder.service;
 
+import com.example.reminder.model.Event;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class EmailService {
     private final JavaMailSender mailSender;
@@ -12,13 +18,80 @@ public class EmailService {
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
+    /*
+    @Async
+    public void sendPlainEmail(String to, String subject, String body) {
+        try {
+            SimpleMailMessage msg = new SimpleMailMessage();
+            msg.setTo(to);
+            msg.setSubject(subject);
+            msg.setText(body);
+            mailSender.send(msg);
+            log.info("Plain email successfully sent to {}", to);
+        } catch (Exception e) {
+            log.error("Failed to send plain email to {}: {}", to, e.getMessage(), e);
+        }
+    }*/
 
     @Async // each call executes in separated Thread
-    public void sendReminderEmail(String to,String subject,String body) {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(to);
-        msg.setSubject(subject);
-        msg.setText(body);
-        mailSender.send(msg);
+    public void sendReminderHtml(String to , String subject , String htmlBody) {
+        try {
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,true,"UTF-8");
+
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(htmlBody, true);
+
+            mailSender.send(mimeMessage);
+            log.info("HTML reminder email sent to {}", to);
+
+        } catch (MessagingException e) {
+            log.error("Failed to send HTML email to {}: {}", to, e.getMessage(), e);
+        }
+    }
+
+    public String buildReminderHtml(Event e) {
+        String desc = (e.getDescription() == null || e.getDescription().isBlank())
+                ? "—"
+                : e.getDescription();
+
+        return """
+        <div style="font-family: Arial, sans-serif; background:#f4f4f5; padding:20px;">
+          <div style="max-width:520px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e5e7eb;">
+            <div style="background:#2563eb; color:#fff; padding:16px 20px; font-size:18px; font-weight:600;">
+              🔔 Reminder: %s
+            </div>
+            <div style="padding:20px;">
+              <p style="margin:0 0 12px 0; color:#374151;">Hi,</p>
+              <p style="margin:0 0 16px 0; color:#374151;">This is a friendly reminder for your event.</p>
+
+              <table style="width:100%%; border-collapse:collapse; margin-top:10px;">
+                <tr>
+                  <td style="padding:8px 0; color:#6b7280; width:110px;">Title:</td>
+                  <td style="padding:8px 0; color:#111827; font-weight:500;">%s</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 0; color:#6b7280;">Event date:</td>
+                  <td style="padding:8px 0; color:#111827;">%s</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 0; color:#6b7280; vertical-align:top;">Description:</td>
+                  <td style="padding:8px 0; color:#111827;">%s</td>
+                </tr>
+              </table>
+
+              <p style="margin-top:20px; font-size:12px; color:#9ca3af;">
+                You received this email because you created a reminder in ReminderApp.
+              </p>
+            </div>
+          </div>
+        </div>
+        """.formatted(
+                e.getTitle(),
+                e.getTitle(),
+                e.getEventDate(),
+                desc
+        );
     }
 }

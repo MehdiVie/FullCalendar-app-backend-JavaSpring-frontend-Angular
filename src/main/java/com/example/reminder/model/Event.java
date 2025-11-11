@@ -25,34 +25,20 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ReminderBeforeEvent
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Event Title is required.")
-    @Column(nullable = false)
     private String title;
-
     private String description;
-
-    @NotNull(message = "Event Date is required.")
-    @TomorrowOrLater
-    @Column(nullable = false)
     private LocalDate eventDate;
-
-    @FutureOrPresent(message = "Reminder time must be in the future or now.")
     private LocalDateTime reminderTime;
-
-    // to track if reminder sent or not
     private boolean reminderSent=false;
+    private LocalDateTime reminderSentTime;
 
     @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    public interface OnCreate{};
-    public interface OnUpdate{};
 
 }

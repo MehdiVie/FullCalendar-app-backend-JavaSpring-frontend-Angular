@@ -6,10 +6,8 @@ import com.example.reminder.model.Event;
 import com.example.reminder.model.User;
 import com.example.reminder.repository.EventRepository;
 import com.example.reminder.security.AuthContext;
-import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,8 +24,9 @@ import java.util.Set;
 @Service
 public class EventService {
     private final EventRepository repo;
-    private EmailService emailService;
-    private AuthContext authContext;
+    private final EmailService emailService;
+    private final AuthContext authContext;
+
 
     // Allowed sort fields (white list)
     private static final Set<String> ALLOWED_SORTS = Set.of("id", "eventDate", "title", "reminderTime");
@@ -38,6 +37,8 @@ public class EventService {
         this.repo = repository;
         this.emailService = emailService;
         this.authContext = authContext;
+
+
     }
 
     public  Page<Event> getPagedEvents(Integer page, Integer size, String sortBy,
@@ -89,6 +90,7 @@ public class EventService {
     public List<Event> getAllEventsForCurrentUser() {
 
         User user = authContext.getCurrentUser();
+        log.info("Current authenticated user: {}", user != null ? user.getEmail() : "null");
         return repo.findByUser(user);
 
     }
@@ -136,7 +138,7 @@ public class EventService {
         repo.delete(event);
     }
 
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedDelay = 60000)
     @Transactional
     public void checkReminders() {
 
@@ -149,12 +151,15 @@ public class EventService {
 
 
         for(Event e : dueEvents) {
-            System.out.println("Its time for event "+e.getTitle()+"("+e.getReminderTime()+")");
+            //System.out.println("Scheduler running at: " + now);
+            //System.out.println("Its time for event "+e.getTitle()+"("+e.getReminderTime()+")");
             try {
-                String msg = "Its time for event: " + e.getTitle() +
-                             "\n Date: " + e.getEventDate() +
-                             "\n Description: " + e.getDescription() ;
-                emailService.sendReminderEmail("salimimehdi@yahoo.com","Reminder "+e.getTitle() , msg);
+                String html = emailService.buildReminderHtml(e);
+                emailService.sendReminderHtml(
+                        e.getUser().getEmail(),
+                        "Reminder: "+e.getTitle() ,
+                        html
+                );
                 okIdies.add(e.getId());
             } catch (Exception ex) {
                 log.error("Failed to update reminder for event {}", e.getId(), ex);
@@ -163,21 +168,13 @@ public class EventService {
 
         if (!okIdies.isEmpty()) {
             int updated = repo.markRemindersSentByIds(okIdies);
-            System.out.println("Proccessed "+updated+" reminders at "+now);
+            //System.out.println("Proccessed "+updated+" reminders at "+now);
             log.info("Proccessed {} reminders at {} ",updated,now);
         }
 
     }
 
-    public EventResponse createEventResponse(Event e) {
-        return new EventResponse(
-                e.getId(),
-                e.getTitle(),
-                e.getDescription(),
-                e.getEventDate(),
-                e.getReminderTime(),
-                e.isReminderSent(),
-                e.getUser().getEmail()
-        );
-    }
+
+
+
 }

@@ -26,6 +26,12 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findPendingReminders(@Param("now") LocalDateTime now);
 
     @Modifying(clearAutomatically = true , flushAutomatically = true)
-    @Query("UPDATE Event e SET reminderSent=true WHERE e.id in :ids")
+    @Query("UPDATE Event e SET reminderSent=true , reminderSentTime=now() WHERE e.id in :ids")
     int markRemindersSentByIds(@Param("ids") List<Long> ids);
+
+    @Query("SELECT COUNT(e) FROM Event e WHERE e.reminderSent = true")
+    Long countByReminderSentTrue();
+
+    @Query("SELECT COUNT(e) FROM Event e WHERE e.reminderSent = false")
+    Long countByReminderSentFalse();
 }

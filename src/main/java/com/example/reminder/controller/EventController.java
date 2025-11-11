@@ -73,7 +73,7 @@ public class EventController {
         List<EventResponse> eventResponseList = new ArrayList<>();
         for(Event e : events) {
             eventResponseList.add(
-                    service.createEventResponse(e)
+                    EventResponse.fromEntity(e)
             );
         };;
         return ResponseEntity.ok(new ApiResponse<>("success", message, eventResponseList));
@@ -95,7 +95,7 @@ public class EventController {
         log.info("Get /api/events/{} -> OK ", id);
 
         return ResponseEntity.ok(new ApiResponse<>("success", "Event retrieved successfully",
-                service.createEventResponse(event)));
+                EventResponse.fromEntity(event)));
     }
 
     /**
@@ -108,7 +108,7 @@ public class EventController {
     public ResponseEntity<ApiResponse<EventResponse>> create(@RequestBody @Valid EventRequest eventRequest) {
         Event createdEvent = service.createEvent(eventRequest);
         log.info("Post /api/events -> created id={} , title={}", createdEvent.getId(), createdEvent.getTitle());
-        EventResponse eventResponse = service.createEventResponse(createdEvent);
+        EventResponse eventResponse = EventResponse.fromEntity(createdEvent);
         return ResponseEntity.status(HttpStatus.CREATED).
                 body(new ApiResponse<>("success", "Event Created",eventResponse)); // 201 Created
     }
@@ -130,7 +130,7 @@ public class EventController {
         }
         Event updatedEvent = service.updateEvent(id, eventRequest);
         log.info("Put /api/events/{} -> updated", id);
-        EventResponse updatedEventResponse = service.createEventResponse(updatedEvent);
+        EventResponse updatedEventResponse = EventResponse.fromEntity(updatedEvent);
         return ResponseEntity.ok(new ApiResponse<>("success" , "Event Updated.",updatedEventResponse ));
     }
 
@@ -147,7 +147,7 @@ public class EventController {
             log.warn("Get /api/events/{} -> not found", id);
             throw new ResourceNotFoundException("Event with ID : "+ id +" not found.");
         }
-        EventResponse eventResponse = service.createEventResponse(existingEvent);
+        EventResponse eventResponse = EventResponse.fromEntity(existingEvent);
         service.deleteEvent(id);
         log.info("Delete /api/events/{} -> deleted", id);
         return ResponseEntity.ok(new ApiResponse<>("success","Event Deleted.",eventResponse));

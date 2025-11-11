@@ -1,5 +1,6 @@
 package com.example.reminder.validation;
 
+import com.example.reminder.dto.EventRequest;
 import com.example.reminder.model.Event;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -7,14 +8,14 @@ import jakarta.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class ReminderBeforeEventValidator implements ConstraintValidator<ReminderBeforeEvent, Event> {
+public class ReminderBeforeEventValidator implements ConstraintValidator<ReminderBeforeEvent, EventRequest> {
 
     @Override
-    public boolean isValid(Event event ,  ConstraintValidatorContext context) {
-        if (event == null || event.getReminderTime()==null || event.getEventDate()==null)
+    public boolean isValid(EventRequest dto , ConstraintValidatorContext context) {
+        if (dto == null || dto.getReminderTime()==null || dto.getEventDate()==null)
             return true;
-        LocalDate eventDate = event.getEventDate();
-        LocalDateTime reminder = event.getReminderTime();
+        LocalDate eventDate = dto.getEventDate();
+        LocalDateTime reminder = dto.getReminderTime();
 
         LocalDate reminderDateOnly = reminder.toLocalDate();
 
