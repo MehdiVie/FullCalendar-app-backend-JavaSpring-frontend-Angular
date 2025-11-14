@@ -136,7 +136,7 @@ public class AdminController {
                     );
 
             event.setReminderSent(true);
-            event.setReminderTime(LocalDateTime.now());
+            event.setReminderSentTime(LocalDateTime.now());
             eventRepo.save(event);
 
             return ResponseEntity.ok(
@@ -156,10 +156,28 @@ public class AdminController {
     public ResponseEntity<ApiResponse<Map<String,Object>>> getSystemStats() {
         Map<String,Object> stats = new HashMap<>();
 
+        // Overall Statistics
         stats.put("totalUsers" , userRepo.count());
         stats.put("totalEvents", eventRepo.count());
         stats.put("totalReminderSent", eventRepo.countByReminderSentTrue());
         stats.put("totalPendingReminders", eventRepo.countByReminderSentFalse());
+        stats.put("totalEventsLastSevenDays", eventRepo.countEventsCreatedAfter(LocalDateTime.now().minusDays(7)));
+
+
+        // Time-based Statistics
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime last7Days = now.minusDays(6);
+        LocalDateTime last24Hours = now.minusHours(24);
+        LocalDateTime next24Hours = now.plusHours(24);
+
+        stats.put("countEventsLast24Hours", eventRepo.countEventsCreatedAfter(last24Hours));
+
+        stats.put("countEventsLast7Days", eventRepo.countEventsCreatedAfter(last7Days));
+
+        stats.put("countRemindersSentLast24Hours", eventRepo.countReminderSentAfter(last24Hours));
+        stats.put("countUpcomingRemindersNext24Hours", eventRepo.countReminderSentBetween(now , next24Hours));
+
+        stats.put("eventsLast7Days", eventService.getEventsPerDay());
 
         return ResponseEntity.ok(
                 new ApiResponse<>("success", "System stats fetched.",stats)

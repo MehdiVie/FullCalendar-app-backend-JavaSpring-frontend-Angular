@@ -16,9 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -35,9 +33,6 @@ public class EventService {
     public EventService(EventRepository repository, EmailService emailService) {
         this.repo = repository;
         this.emailService = emailService;
-
-
-
     }
 
 
@@ -110,6 +105,31 @@ public class EventService {
 
     }
 
+    public List<Map<String,Object>> getEventsPerDay() {
+
+        LocalDate from = LocalDate.now();
+        LocalDate to = LocalDate.now().plusDays(29);
+
+        List<Object[]> raw = repo.eventsPerDaySince(from,to);
+
+        List<Map<String,Object>> result = new ArrayList<>();
+
+        for(Object[] row : raw) {
+            LocalDate date = (LocalDate) row[0];
+            Long count = (Long) row[1];
+
+            Map<String,Object> map = new HashMap<>();
+            map.put("date",date);
+            map.put("count",count);
+            result.add(map);
+        }
+
+        System.out.println(result);
+
+        return result;
+
+    }
+
     public Event getEventById(User user , Long id) {
 
         Event event =  repo.findById(id).orElse(null);
@@ -171,7 +191,6 @@ public class EventService {
 
     public void deleteEvent(User user,Long id) {
         Event event = repo.findById(id).orElse(null);
-
 
         if (event == null || !event.getUser().equals(user)) {
             throw new SecurityException("Not allowed to delete this event");

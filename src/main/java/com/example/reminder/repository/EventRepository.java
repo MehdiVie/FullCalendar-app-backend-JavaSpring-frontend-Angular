@@ -58,4 +58,18 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     @Query("SELECT COUNT(e) FROM Event e WHERE e.reminderSent = false")
     Long countByReminderSentFalse();
+
+    @Query("SELECT COUNT(e) FROM Event e WHERE e.createdAt >= :from")
+    Long countEventsCreatedAfter(@Param("from") LocalDateTime from);
+
+    @Query("SELECT COUNT(e) FROM Event e WHERE e.reminderSent=true AND e.reminderSentTime >= :from")
+    Long countReminderSentAfter(@Param("from") LocalDateTime from);
+
+    @Query("SELECT COUNT(e) FROM Event e WHERE e.reminderSent=false AND e.reminderTime >= :from" +
+            " AND e.reminderTime <= :to")
+    Long countReminderSentBetween(@Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
+
+    @Query("SELECT e.eventDate as date , COUNT(e) as cnt FROM Event e WHERE " +
+            " e.eventDate >= :from AND e.eventDate <= :to GROUP BY  e.eventDate ORDER BY  e.eventDate")
+    List<Object[]> eventsPerDaySince(@Param("from") LocalDate from,@Param("to") LocalDate to);
 }
