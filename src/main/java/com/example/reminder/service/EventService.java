@@ -164,13 +164,11 @@ public class EventService {
         return repo.findUpcomingReminders(user, now, threshold);
     }
 
-
     public Event createEvent(User user,EventRequest eventRequest) {
 
         if (eventRequest == null) {
             throw new IllegalArgumentException("Event cannot be null");
         }
-
 
         Event createdEvent = new Event();
         createdEvent.setTitle(eventRequest.getTitle());
@@ -230,7 +228,7 @@ public class EventService {
                 );
                 okIdies.add(e.getId());
             } catch (Exception ex) {
-                log.error("Failed to update reminder for event {}", e.getId(), ex);
+                log.error("Failed to send Email for event {}", e.getId(), ex);
             }
         }
 

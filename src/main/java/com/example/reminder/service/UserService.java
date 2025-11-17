@@ -5,22 +5,25 @@ import com.example.reminder.model.Role;
 import com.example.reminder.model.User;
 import com.example.reminder.repository.RoleRepository;
 import com.example.reminder.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
-
+@Slf4j
 @Service
 public class UserService {
     private final UserRepository userRepo;
     private final RoleRepository roleRepo;
     private final PasswordEncoder passwordEncoder;
+    private final EmailService emailService;
 
-    public UserService(UserRepository userRepo, RoleRepository roleRepo,@Lazy PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepo, RoleRepository roleRepo,@Lazy PasswordEncoder passwordEncoder,
+                        EmailService emailService) {
         this.userRepo = userRepo;
         this.roleRepo = roleRepo;
         this.passwordEncoder = passwordEncoder;
+        this.emailService = emailService;
     }
 
     /*
@@ -64,6 +67,49 @@ public class UserService {
         user.addRole(role);
 
         return userRepo.save(user);
+    }
+
+    public void changePassword(User user,String oldPassword, String newPassword) {
+
+        if (!passwordEncoder.matches(oldPassword, user.getPassword() )) {
+            throw new BadRequestException("Old password is incorrect.");
+        }
+
+        if (newPassword == null || newPassword.length() < 6) {
+            throw new BadRequestException("New password must be at least 6 characters.");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepo.save(user);
+    }
+
+    public void changeEmail(User user,String oldEmail, String newEmail) {
+
+        if (!(oldEmail.equalsIgnoreCase(user.getEmail())) ) {
+            throw new BadRequestException("Current email is incorrect.");
+        }
+
+        if (userRepo.existsByEmail(newEmail)) {
+            throw new BadRequestException("New email already exists");
+        }
+
+        if (newEmail == null || newEmail.length() < 6) {
+            throw new BadRequestException("New Email must be at least 6 characters.");
+        }
+
+        user.setEmail(newEmail);
+        try {
+            String html = emailService.changeEmailHtml();
+            emailService.sendReminderHtml(
+                    user.getEmail(),
+                    "Reminder App: Email changed." ,
+                    html
+            );
+
+        } catch (Exception ex) {
+            log.error("Failed to send Email for changed Email {}", newEmail, ex);
+        }
+        userRepo.save(user);
     }
 
 }
