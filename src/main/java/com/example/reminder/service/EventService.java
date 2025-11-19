@@ -160,9 +160,6 @@ public class EventService {
 
     }
 
-    public List<Event> getAllUpcomingReminders(User user,LocalDateTime now, LocalDateTime threshold) {
-        return repo.findUpcomingReminders(user, now, threshold);
-    }
 
     public Event createEvent(User user,EventRequest eventRequest) {
 

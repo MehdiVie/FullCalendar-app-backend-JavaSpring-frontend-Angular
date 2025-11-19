@@ -71,19 +71,6 @@ public class EventController {
         return  ResponseEntity.ok(new ApiResponse<>("success", "Paged Events retrieved" , responseData));
     }
 
-    @GetMapping("/upcoming")
-    public ResponseEntity<ApiResponse<List<EventResponse>>> getUpcomingEvents (
-                                                    @RequestParam(defaultValue = "1") long minute) {
-        var currentUser = authContext.getCurrentUser();
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime threshold = LocalDateTime.now().plusMinutes(minute);
-        List<Event> events = service.getAllUpcomingReminders(currentUser, now, threshold);
-        List<EventResponse> eventResponses = events.stream()
-                .map(EventResponse::fromEntity)
-                .toList();
-        return ResponseEntity.ok(new ApiResponse<>("success", "Upcoming Events retrieved" , eventResponses));
-    }
-
     /**
      * GET /api/events
      * Retrieve all events from the database.

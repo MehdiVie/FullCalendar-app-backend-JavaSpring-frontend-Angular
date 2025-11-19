@@ -60,8 +60,13 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     @Query("SELECT e FROM Event e WHERE e.user=:user AND e.reminderSent = false AND " +
                                     "e.reminderTime <= :threshold  AND e.reminderTime >= :now ")
-    List<Event> findUpcomingReminders(@Param("user") User user, @Param("now") LocalDateTime now,
+    List<Event> findAllUpcomingReminders(@Param("user") User user, @Param("now") LocalDateTime now,
                                       @Param("threshold")LocalDateTime threshold);
+
+    @Query("SELECT e FROM Event e WHERE e.user=:user AND e.reminderSent = true AND " +
+            "e.reminderTime >= :threshold  AND e.reminderTime <= :now ")
+    List<Event> findAllSentReminders(@Param("user") User user, @Param("now") LocalDateTime now,
+                                         @Param("threshold")LocalDateTime threshold);
 
     @Modifying(clearAutomatically = true , flushAutomatically = true)
     @Query("UPDATE Event e SET reminderSent=true , reminderSentTime=now() WHERE e.id in :ids")
