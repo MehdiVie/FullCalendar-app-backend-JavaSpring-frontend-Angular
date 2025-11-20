@@ -11,10 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
@@ -89,6 +86,21 @@ public class AuthController {
             return ResponseEntity.status(401).body(error);
         }
 
+
+    }
+    @GetMapping("/verify-email")
+    public ResponseEntity<ApiResponse<String>> verifyEmail(@RequestParam String token) {
+
+        String verifiedEmail = userService.getUserByVerificationToken(token);
+
+
+        if (verifiedEmail != null && !verifiedEmail.isEmpty()) return ResponseEntity.ok(
+                new ApiResponse<>("success", "Email verified successfully.", verifiedEmail)
+        );
+
+        return ResponseEntity.ok(
+                new ApiResponse<>("error", "Failed email verification.", null)
+        );
 
     }
 }

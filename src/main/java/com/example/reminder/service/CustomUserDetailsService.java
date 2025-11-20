@@ -4,6 +4,7 @@ import com.example.reminder.model.User;
 import com.example.reminder.repository.UserRepository;
 import com.example.reminder.security.CustomUserDetails;
 
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,7 +25,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername (String email) throws UsernameNotFoundException {
         User user = userRepo.findByEmailWithRoles(email)
                 .orElseThrow(() -> new UsernameNotFoundException("No user found with email :" + email));
-
+        if(!user.isEmailVerified()) {
+            throw new DisabledException("Email is not verified yet.");
+        }
         return new CustomUserDetails(user);
     }
 

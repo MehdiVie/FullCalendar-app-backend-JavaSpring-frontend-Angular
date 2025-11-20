@@ -15,6 +15,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select u from User u " +
             "left join fetch u.userRoles ur " +
             "Left Join fetch ur.role r " +
+            "where emailVerificationToken = :token AND emailVerified = false")
+    User findByEmailVerificationToken(String token);
+
+
+
+    @Query("select u from User u " +
+            "left join fetch u.userRoles ur " +
+            "Left Join fetch ur.role r " +
             "where email = :email")
     Optional<User> findByEmailWithRoles (String email);
 }

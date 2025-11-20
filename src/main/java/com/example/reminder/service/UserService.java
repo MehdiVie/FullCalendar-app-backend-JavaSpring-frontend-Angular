@@ -6,17 +6,25 @@ import com.example.reminder.model.User;
 import com.example.reminder.repository.RoleRepository;
 import com.example.reminder.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Slf4j
 @Service
 public class UserService {
+
+
     private final UserRepository userRepo;
     private final RoleRepository roleRepo;
     private final PasswordEncoder passwordEncoder;
     private final EmailService emailService;
+
+    @Value("${app.frontend.base-url}")
+    private String frontendBaseUrl;
 
     public UserService(UserRepository userRepo, RoleRepository roleRepo,@Lazy PasswordEncoder passwordEncoder,
                         EmailService emailService) {
@@ -97,12 +105,19 @@ public class UserService {
             throw new BadRequestException("New Email must be at least 6 characters.");
         }
 
-        user.setEmail(newEmail);
+        String token = UUID.randomUUID().toString();
+
+        user.setPendingEmail(newEmail);
+        user.setEmailVerified(false);
+        user.setEmailVerificationToken(token);
+
+        String link = frontendBaseUrl+"/login?verify="+token;
+
         try {
-            String html = emailService.changeEmailHtml();
+            String html = emailService.buildVerificationEmailHtml(link,newEmail);
             emailService.sendReminderHtml(
-                    user.getEmail(),
-                    "Reminder App: Email changed." ,
+                    newEmail,
+                    "Reminder App: Verify your New Email." ,
                     html
             );
 
@@ -110,6 +125,23 @@ public class UserService {
             log.error("Failed to send Email for changed Email {}", newEmail, ex);
         }
         userRepo.save(user);
+    }
+
+    public String getUserByVerificationToken(String token) {
+        User user= userRepo.findByEmailVerificationToken(token);
+
+        if (user == null) {
+            throw new BadRequestException("Invalid or expired token.");
+        }
+
+        user.setEmail(user.getPendingEmail());
+        user.setPendingEmail(null);
+        user.setEmailVerified(true);
+        user.setEmailVerificationToken(null);
+
+        userRepo.save(user);
+
+        return user.getEmail();
     }
 
 }

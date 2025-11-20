@@ -30,6 +30,10 @@ public class User {
 
     private boolean enabled = true;
 
+    private boolean emailVerified = true;
+    private String pendingEmail;
+    private String emailVerificationToken;
+
     // connect to mid-table (UserRole)
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
     private Set<UserRole> userRoles = new HashSet<>();

@@ -137,4 +137,14 @@ public class EmailService {
         </div>
         """;
     }
+
+    public String buildVerificationEmailHtml(String link, String newEmail) {
+        return """
+        <h2>Confirm your new email</h2>
+        <p>Please click the link below to verify: <b>%s</b></p>
+        <a href="%s" style="padding:10px 18px; background:#2563eb; color:white; text-decoration:none; border-radius:6px;">
+            Verify Email
+        </a>
+    """.formatted(newEmail, link);
+    }
 }
