@@ -141,10 +141,52 @@ public class EmailService {
     public String buildVerificationEmailHtml(String link, String newEmail) {
         return """
         <h2>Confirm your new email</h2>
-        <p>Please click the link below to verify: <b>%s</b></p>
+        <p>
+        This link is valid for 30 minutes.
+        Please click the link below to verify: <b>%s</b></p>
         <a href="%s" style="padding:10px 18px; background:#2563eb; color:white; text-decoration:none; border-radius:6px;">
             Verify Email
         </a>
     """.formatted(newEmail, link);
     }
+
+    public String buildResetPasswordHtml(String link) {
+        return """
+        <div style="font-family: Arial, sans-serif; background:#f4f4f5; padding:20px;">
+          <div style="max-width:520px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e5e7eb;">
+
+            <div style="padding:20px;">
+              <p style="margin:0 0 12px 0; color:#374151;">Hi,</p>
+              <p style="margin:0 0 16px 0; color:#374151;">
+                We received a request to reset your password.
+                If this was you, click the button below to set a new password.
+                This link is valid for 30 minutes.
+              </p>
+
+              <div style="text-align:center; margin:24px 0;">
+                <a href="%s" target="_blank"
+                   style="
+                     display:inline-block;
+                     background:#3b82f6;
+                     color:#ffffff;
+                     text-decoration:none;
+                     padding:12px 20px;
+                     border-radius:8px;
+                     font-size:14px;
+                     font-weight:600;
+                     font-family:Arial, sans-serif;
+                   ">
+                  Reset your password
+                </a>
+              </div>
+
+              <p style="margin-top:10px; font-size:12px; color:#9ca3af;">
+                If you did not request this, you can safely ignore this email.
+              </p>
+            </div>
+          </div>
+        </div>
+        """.formatted(link);
+    }
+
 }

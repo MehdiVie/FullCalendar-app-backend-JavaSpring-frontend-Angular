@@ -1,4 +1,5 @@
 package com.example.reminder.service;
+import com.example.reminder.dto.EmailVerificationResult;
 import com.example.reminder.dto.RegisterRequest;
 import com.example.reminder.exception.BadRequestException;
 import com.example.reminder.model.Role;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Slf4j
@@ -110,6 +112,7 @@ public class UserService {
         user.setPendingEmail(newEmail);
         user.setEmailVerified(false);
         user.setEmailVerificationToken(token);
+        user.setEmailVerificationTokenExpiry(LocalDateTime.now().plusMinutes(30));
 
         String link = frontendBaseUrl+"/login?verify="+token;
 
@@ -127,21 +130,81 @@ public class UserService {
         userRepo.save(user);
     }
 
-    public String getUserByVerificationToken(String token) {
-        User user= userRepo.findByEmailVerificationToken(token);
+    public EmailVerificationResult getUserByEmailVerificationToken(String token) {
+        User user= userRepo.findByEmailVerificationToken(token)
+                .orElseThrow(() -> new BadRequestException("Invalid token."));
 
-        if (user == null) {
-            throw new BadRequestException("Invalid or expired token.");
+        boolean expired = false;
+        if (!userRepo.isEmailVerificationExpired(user.getEmail())) {
+            user.setEmail(user.getPendingEmail());
+        } else {
+            expired = true;
         }
-
-        user.setEmail(user.getPendingEmail());
         user.setPendingEmail(null);
         user.setEmailVerified(true);
         user.setEmailVerificationToken(null);
+        user.setEmailVerificationTokenExpiry(null);
 
         userRepo.save(user);
 
-        return user.getEmail();
+        return new EmailVerificationResult(
+                user.getEmail(),
+                expired
+        );
+    }
+
+    public void requestPasswordReset(String email) {
+        User user = userRepo.findByEmail(email)
+                .orElseThrow(()->new BadRequestException("Invalid Email address."));
+
+        String token = UUID.randomUUID().toString();
+        LocalDateTime expiry =  LocalDateTime.now().plusMinutes(30); // resetpass link expiration in 1 hour
+
+        user.setResetPasswordToken(token);
+        user.setResetPasswordTokenExpiry(expiry);
+
+        String link = frontendBaseUrl+"/reset-password?token="+token;
+        String html = emailService.buildResetPasswordHtml(link);
+
+        try {
+
+            emailService.sendReminderHtml(
+                    user.getEmail(),
+                    "Reminder App: Reset your Password." ,
+                    html
+            );
+
+        } catch (Exception ex) {
+            log.error("Failed to send Email for reset password for user {}", user.getEmail(), ex);
+        }
+
+        userRepo.save(user);
+
+    }
+
+    public User resetPasswordCheckToken(String token) {
+        return userRepo.findByResetPasswordToken(token)
+                .orElseThrow(() -> new BadRequestException("Invalid reset password token."));
+    }
+
+    public  void resetPassword(String token, String newPassword) {
+
+        User user = this.resetPasswordCheckToken(token);
+
+        if(user.getResetPasswordTokenExpiry() == null ||
+           user.getResetPasswordTokenExpiry().isBefore(LocalDateTime.now())) {
+            throw new BadRequestException("Expired reset password token.");
+        }
+
+        if (newPassword == null || newPassword.length() < 6) {
+            throw new BadRequestException("New password must be at least 6 characters.");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setResetPasswordTokenExpiry(null);
+        user.setResetPasswordToken(null);
+        userRepo.save(user);
+
     }
 
 }

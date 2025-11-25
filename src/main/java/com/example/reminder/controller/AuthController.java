@@ -1,10 +1,13 @@
 package com.example.reminder.controller;
-
 import com.example.reminder.dto.*;
 import com.example.reminder.model.User;
 import com.example.reminder.security.CustomUserDetails;
 import com.example.reminder.security.JwtService;
 import com.example.reminder.service.UserService;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +15,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -91,15 +91,56 @@ public class AuthController {
     @GetMapping("/verify-email")
     public ResponseEntity<ApiResponse<String>> verifyEmail(@RequestParam String token) {
 
-        String verifiedEmail = userService.getUserByVerificationToken(token);
+        EmailVerificationResult result = userService.getUserByEmailVerificationToken(token);
 
-
-        if (verifiedEmail != null && !verifiedEmail.isEmpty()) return ResponseEntity.ok(
-                new ApiResponse<>("success", "Email verified successfully.", verifiedEmail)
-        );
+        if (result.getEmail() != null && !result.getEmail().isEmpty() && !result.isExpired()) {
+            return ResponseEntity.ok(
+                    new ApiResponse<>("success", "Email verified successfully.", result.getEmail())
+            );
+        } else if (result.isExpired()) {
+            return ResponseEntity.ok(
+                    new ApiResponse<>("error", "expired", result.getEmail())
+            );
+        }
 
         return ResponseEntity.ok(
                 new ApiResponse<>("error", "Failed email verification.", null)
+        );
+
+    }
+
+    @PutMapping("/forget-password")
+    public ResponseEntity<ApiResponse<Void>> forgotPassword(
+            @RequestBody @Valid ForgetPasswordRequest request
+    )
+    {
+
+        userService.requestPasswordReset(request.getEmail());
+
+        return ResponseEntity.ok(
+                new ApiResponse<>("success", "Reset password link sent successfully.", null)
+        );
+    }
+
+    @GetMapping("/reset-password-check-token")
+    public ResponseEntity<ApiResponse<UserProfileResponse>> resetPasswordCheckToken(
+            String token) {
+        User user = userService.resetPasswordCheckToken(token);
+
+        return ResponseEntity.ok(
+                new ApiResponse<>("success", "Reset password link sent successfully.",
+                        UserProfileResponse.fromEntity(user))
+        );
+    }
+
+    @PutMapping("/reset-password")
+    public ResponseEntity<ApiResponse<Void>> resetPassword(
+            @RequestBody @Valid ResetPasswordRequest request) {
+
+        userService.resetPassword(request.getToken() , request.getNewPassword());
+
+        return ResponseEntity.ok(
+                new ApiResponse<>("success", "Password reset successfully.", null)
         );
 
     }

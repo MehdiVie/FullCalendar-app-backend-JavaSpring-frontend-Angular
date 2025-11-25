@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -33,6 +34,11 @@ public class User {
     private boolean emailVerified = true;
     private String pendingEmail;
     private String emailVerificationToken;
+    private LocalDateTime emailVerificationTokenExpiry;
+
+
+    private String resetPasswordToken;
+    private LocalDateTime resetPasswordTokenExpiry;
 
     // connect to mid-table (UserRole)
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
