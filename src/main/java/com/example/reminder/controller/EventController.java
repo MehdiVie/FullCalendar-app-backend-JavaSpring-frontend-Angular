@@ -117,7 +117,9 @@ public class EventController {
      */
     @PostMapping
     public ResponseEntity<ApiResponse<EventResponse>> create(@RequestBody @Valid EventRequest eventRequest) {
+
         Event createdEvent = service.createEvent(authContext.getCurrentUser(),eventRequest);
+
         log.info("Post /api/events -> created id={} , title={}", createdEvent.getId(), createdEvent.getTitle());
         EventResponse eventResponse = EventResponse.fromEntity(createdEvent);
         return ResponseEntity.status(HttpStatus.CREATED).

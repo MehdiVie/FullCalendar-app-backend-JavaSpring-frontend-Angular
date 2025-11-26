@@ -1,5 +1,6 @@
 package com.example.reminder.dto;
 
+import com.example.reminder.model.RecurrenceType;
 import com.example.reminder.validation.ReminderBeforeEvent;
 import com.example.reminder.validation.TomorrowOrLater;
 import jakarta.validation.constraints.FutureOrPresent;
@@ -29,5 +30,9 @@ public class EventRequest {
 
     @FutureOrPresent(message = "Reminder time must be in the future or now.")
     private LocalDateTime reminderTime;
+
+    private RecurrenceType recurrenceType;
+    private Integer recurrenceInterval;
+    private LocalDate recurrenceEndDate;
 
 }

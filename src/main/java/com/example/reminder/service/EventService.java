@@ -3,6 +3,7 @@ import com.example.reminder.dto.EventRequest;
 import com.example.reminder.dto.EventResponse;
 import com.example.reminder.exception.ResourceNotFoundException;
 import com.example.reminder.model.Event;
+import com.example.reminder.model.RecurrenceType;
 import com.example.reminder.model.User;
 import com.example.reminder.repository.EventRepository;
 import com.example.reminder.security.AuthContext;
@@ -172,6 +173,9 @@ public class EventService {
         createdEvent.setDescription(eventRequest.getDescription());
         createdEvent.setEventDate(eventRequest.getEventDate());
         createdEvent.setReminderTime(eventRequest.getReminderTime());
+        createdEvent.setRecurrenceType(eventRequest.getRecurrenceType());
+        createdEvent.setRecurrenceInterval(eventRequest.getRecurrenceInterval());
+        createdEvent.setRecurrenceEndDate(eventRequest.getRecurrenceEndDate());
         createdEvent.setUser(user);
 
         return repo.save(createdEvent);
@@ -186,6 +190,9 @@ public class EventService {
         event.setDescription(updatedEvent.getDescription());
         event.setEventDate(updatedEvent.getEventDate());
         event.setReminderTime(updatedEvent.getReminderTime());
+        event.setRecurrenceType(updatedEvent.getRecurrenceType());
+        event.setRecurrenceInterval(updatedEvent.getRecurrenceInterval());
+        event.setRecurrenceEndDate(updatedEvent.getRecurrenceEndDate());
         event.setReminderSent(false);
         event.setReminderSentTime(null);
 
@@ -210,8 +217,7 @@ public class EventService {
         System.out.println("checkReminders() running at: " + now);
         System.out.println("Local time: " + LocalDateTime.now());*/
         List<Event> dueEvents = repo.findPendingReminders(now);
-        List<Long> okIdies = new ArrayList<>();
-
+        List<Long> okIds = new ArrayList<>();
 
         for(Event e : dueEvents) {
             //System.out.println("Scheduler running at: " + now);
@@ -223,21 +229,71 @@ public class EventService {
                         "Reminder: "+e.getTitle() ,
                         html
                 );
-                okIdies.add(e.getId());
+                okIds.add(e.getId());
+
+                //handle Recurrence
+                createNextOccurenceIfRecurring(e);
+
             } catch (Exception ex) {
                 log.error("Failed to send Email for event {}", e.getId(), ex);
             }
         }
 
-        if (!okIdies.isEmpty()) {
-            int updated = repo.markRemindersSentByIds(okIdies);
+        if (!okIds.isEmpty()) {
+            int updated = repo.markRemindersSentByIds(okIds);
             //System.out.println("Proccessed "+updated+" reminders at "+now);
             log.info("Proccessed {} reminders at {} ",updated,now);
         }
 
     }
 
+    private void createNextOccurenceIfRecurring(Event e) {
+        if (e.getRecurrenceType() == null || e.getRecurrenceType() == RecurrenceType.NONE) {
+            return;
+        }
 
+        int interval =  (e.getRecurrenceInterval() != null || e.getRecurrenceInterval() > 0) ?
+                e.getRecurrenceInterval() : 1;
+
+        LocalDate nextDate = e.getEventDate();
+
+        switch (e.getRecurrenceType()) {
+            case DAILY -> nextDate = nextDate.plusDays(interval);
+            case WEEKLY -> nextDate = nextDate.plusWeeks(interval);
+            case MONTHLY -> nextDate = nextDate.plusMonths(interval);
+            case QUARTERLY -> nextDate = nextDate.plusMonths(3L * interval);
+            case YEARLY -> nextDate = nextDate.plusYears(interval);
+        }
+
+        if(e.getRecurrenceEndDate() != null && e.getRecurrenceEndDate().isBefore(nextDate)) {
+            return;
+        }
+
+        Event next = new Event();
+
+        next.setTitle(e.getTitle());
+        next.setDescription(e.getDescription());
+        next.setUser(e.getUser());
+        next.setEventDate(nextDate);
+
+        if (e.getReminderTime() != null ) {
+            LocalDateTime nextReminder = e.getReminderTime();
+            switch (e.getRecurrenceType()) {
+                case DAILY -> nextReminder = nextReminder.plusDays(interval);
+                case WEEKLY -> nextReminder = nextReminder.plusWeeks(interval);
+                case MONTHLY -> nextReminder = nextReminder.plusMonths(interval);
+                case QUARTERLY -> nextReminder = nextReminder.plusMonths(3L * interval);
+                case YEARLY -> nextReminder = nextReminder.plusYears(interval);
+            }
+            next.setReminderTime(nextReminder);
+        }
+
+        next.setRecurrenceType(e.getRecurrenceType());
+        next.setRecurrenceInterval(interval);
+        next.setRecurrenceEndDate(e.getRecurrenceEndDate());
+
+        repo.save(next);
+    }
 
 
 }

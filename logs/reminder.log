@@ -1,325 +1,102 @@
-2025-11-25T00:00:32.205+01:00  INFO 49324 --- [reminder] [main] c.example.reminder.ReminderApplication   : Starting ReminderApplication using Java 21.0.8 with PID 49324 (C:\Java-Spring\reminder\target\classes started by zhila in C:\Java-Spring\reminder)
-2025-11-25T00:00:32.220+01:00  INFO 49324 --- [reminder] [main] c.example.reminder.ReminderApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-25T00:00:33.977+01:00  INFO 49324 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-25T00:00:34.059+01:00  INFO 49324 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 4 JPA repository interfaces.
-2025-11-25T00:00:35.158+01:00  INFO 49324 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
-2025-11-25T00:00:35.187+01:00  INFO 49324 --- [reminder] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-11-25T00:00:35.188+01:00  INFO 49324 --- [reminder] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2025-11-25T00:00:35.285+01:00  INFO 49324 --- [reminder] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-11-25T00:00:35.286+01:00  INFO 49324 --- [reminder] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2972 ms
-2025-11-25T00:00:35.595+01:00  INFO 49324 --- [reminder] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-25T00:00:35.733+01:00  INFO 49324 --- [reminder] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-11-25T00:00:35.828+01:00  INFO 49324 --- [reminder] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-11-25T00:00:36.469+01:00  INFO 49324 --- [reminder] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-25T00:00:36.518+01:00  INFO 49324 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-25T00:00:36.747+01:00  INFO 49324 --- [reminder] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5b7ee56c
-2025-11-25T00:00:36.749+01:00  INFO 49324 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-25T00:00:36.835+01:00  WARN 49324 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-25T00:00:36.836+01:00  WARN 49324 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-11-25T00:00:38.257+01:00  INFO 49324 --- [reminder] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-25T00:00:38.512+01:00  INFO 49324 --- [reminder] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T00:00:38.949+01:00  INFO 49324 --- [reminder] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-11-25T00:00:40.377+01:00  INFO 49324 --- [reminder] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-11-25T00:00:40.378+01:00  WARN 49324 --- [reminder] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
-2025-11-25T00:00:40.585+01:00  WARN 49324 --- [reminder] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-25T00:00:41.740+01:00  INFO 49324 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
-2025-11-25T00:00:41.756+01:00  INFO 49324 --- [reminder] [main] c.example.reminder.ReminderApplication   : Started ReminderApplication in 10.381 seconds (process running for 11.212)
-2025-11-25T00:01:34.924+01:00  INFO 49324 --- [reminder] [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-11-25T00:01:34.925+01:00  INFO 49324 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-11-25T00:01:34.926+01:00  INFO 49324 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-11-25T00:01:35.480+01:00  INFO 49324 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T00:02:31.045+01:00  INFO 49324 --- [reminder] [task-1] c.example.reminder.service.EmailService  : HTML reminder email sent to concerned.person.wien@gmail.com
-2025-11-25T00:24:33.254+01:00  INFO 49324 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T00:29:53.961+01:00  INFO 49324 --- [reminder] [task-2] c.example.reminder.service.EmailService  : HTML reminder email sent to baraye.azadi.group@gmail.com
-2025-11-25T00:34:34.519+01:00  INFO 49324 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T00:35:18.257+01:00  INFO 49324 --- [reminder] [task-3] c.example.reminder.service.EmailService  : HTML reminder email sent to baraye.azadi.group@gmail.com
-2025-11-25T00:37:46.983+01:00  INFO 49324 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T00:38:23.812+01:00  INFO 49324 --- [reminder] [task-4] c.example.reminder.service.EmailService  : HTML reminder email sent to baraye.azadi.group@gmail.com
-2025-11-25T00:43:32.777+01:00  INFO 49324 --- [reminder] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T00:43:32.838+01:00  INFO 49324 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-11-25T00:43:32.865+01:00  INFO 49324 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-11-25T00:43:40.616+01:00  INFO 64372 --- [reminder] [main] c.example.reminder.ReminderApplication   : Starting ReminderApplication using Java 21.0.8 with PID 64372 (C:\Java-Spring\reminder\target\classes started by zhila in C:\Java-Spring\reminder)
-2025-11-25T00:43:40.619+01:00  INFO 64372 --- [reminder] [main] c.example.reminder.ReminderApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-25T00:43:42.428+01:00  INFO 64372 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-25T00:43:42.508+01:00  INFO 64372 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 4 JPA repository interfaces.
-2025-11-25T00:43:43.778+01:00  INFO 64372 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
-2025-11-25T00:43:43.836+01:00  INFO 64372 --- [reminder] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-11-25T00:43:43.836+01:00  INFO 64372 --- [reminder] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2025-11-25T00:43:43.996+01:00  INFO 64372 --- [reminder] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-11-25T00:43:43.996+01:00  INFO 64372 --- [reminder] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3299 ms
-2025-11-25T00:43:44.555+01:00  INFO 64372 --- [reminder] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-25T00:43:44.861+01:00  INFO 64372 --- [reminder] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-11-25T00:43:44.936+01:00  INFO 64372 --- [reminder] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-11-25T00:43:45.555+01:00  INFO 64372 --- [reminder] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-25T00:43:45.620+01:00  INFO 64372 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-25T00:43:46.026+01:00  INFO 64372 --- [reminder] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@17f8db6
-2025-11-25T00:43:46.028+01:00  INFO 64372 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-25T00:43:46.205+01:00  WARN 64372 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-25T00:43:46.205+01:00  WARN 64372 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-11-25T00:43:47.537+01:00  INFO 64372 --- [reminder] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-25T00:43:47.682+01:00  INFO 64372 --- [reminder] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T00:43:48.040+01:00  INFO 64372 --- [reminder] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-11-25T00:43:49.281+01:00  INFO 64372 --- [reminder] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-11-25T00:43:49.281+01:00  WARN 64372 --- [reminder] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
-2025-11-25T00:43:49.470+01:00  WARN 64372 --- [reminder] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-25T00:43:50.532+01:00  INFO 64372 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
-2025-11-25T00:43:50.550+01:00  INFO 64372 --- [reminder] [main] c.example.reminder.ReminderApplication   : Started ReminderApplication in 10.691 seconds (process running for 11.345)
-2025-11-25T00:44:08.067+01:00  INFO 64372 --- [reminder] [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-11-25T00:44:08.067+01:00  INFO 64372 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-11-25T00:44:08.069+01:00  INFO 64372 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-11-25T00:44:37.655+01:00  INFO 64372 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T00:45:02.163+01:00  INFO 64372 --- [reminder] [task-1] c.example.reminder.service.EmailService  : HTML reminder email sent to baraye.azadi.group@gmail.com
-2025-11-25T00:53:27.342+01:00  INFO 64372 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T00:53:56.502+01:00  INFO 64372 --- [reminder] [task-2] c.example.reminder.service.EmailService  : HTML reminder email sent to baraye.azadi.group@gmail.com
-2025-11-25T04:54:41.300+01:00  WARN 64372 --- [reminder] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4h24s873ms230µs200ns).
-2025-11-25T10:33:18.442+01:00  INFO 64372 --- [reminder] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T10:33:18.556+01:00  INFO 64372 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-11-25T10:33:18.579+01:00  INFO 64372 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-11-25T10:37:17.120+01:00  INFO 60012 --- [reminder] [main] c.example.reminder.ReminderApplication   : Starting ReminderApplication using Java 21.0.8 with PID 60012 (C:\Java-Spring\reminder\target\classes started by zhila in C:\Java-Spring\reminder)
-2025-11-25T10:37:17.123+01:00  INFO 60012 --- [reminder] [main] c.example.reminder.ReminderApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-25T10:37:18.890+01:00  INFO 60012 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-25T10:37:19.005+01:00  INFO 60012 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 104 ms. Found 4 JPA repository interfaces.
-2025-11-25T10:37:20.706+01:00  INFO 60012 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
-2025-11-25T10:37:20.738+01:00  INFO 60012 --- [reminder] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-11-25T10:37:20.739+01:00  INFO 60012 --- [reminder] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2025-11-25T10:37:20.890+01:00  INFO 60012 --- [reminder] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-11-25T10:37:20.891+01:00  INFO 60012 --- [reminder] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3676 ms
-2025-11-25T10:37:21.350+01:00  INFO 60012 --- [reminder] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-25T10:37:21.547+01:00  INFO 60012 --- [reminder] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-11-25T10:37:21.631+01:00  INFO 60012 --- [reminder] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-11-25T10:37:22.205+01:00  INFO 60012 --- [reminder] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-25T10:37:22.255+01:00  INFO 60012 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-25T10:37:22.477+01:00  INFO 60012 --- [reminder] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@38054d01
-2025-11-25T10:37:22.479+01:00  INFO 60012 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-25T10:37:22.553+01:00  WARN 60012 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-25T10:37:22.555+01:00  WARN 60012 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-11-25T10:37:23.813+01:00  INFO 60012 --- [reminder] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-25T10:37:23.976+01:00  INFO 60012 --- [reminder] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T10:37:24.423+01:00  INFO 60012 --- [reminder] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-11-25T10:37:25.773+01:00  INFO 60012 --- [reminder] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-11-25T10:37:25.775+01:00  WARN 60012 --- [reminder] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
-2025-11-25T10:37:26.004+01:00  WARN 60012 --- [reminder] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-25T10:37:27.301+01:00  INFO 60012 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
-2025-11-25T10:37:27.321+01:00  INFO 60012 --- [reminder] [main] c.example.reminder.ReminderApplication   : Started ReminderApplication in 11.081 seconds (process running for 12.064)
-2025-11-25T10:37:27.394+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-11-25T10:37:27.394+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-11-25T10:37:27.395+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2025-11-25T10:39:56.810+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T10:40:42.991+01:00  INFO 60012 --- [reminder] [task-1] c.example.reminder.service.EmailService  : HTML reminder email sent to baraye.azadi.group@gmail.com
-2025-11-25T11:38:53.521+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T11:46:43.740+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T11:47:33.361+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Post /api/events -> created id=37 , title=Test-for-Mehdi
-2025-11-25T11:47:36.080+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T11:50:28.654+01:00  INFO 60012 --- [reminder] [scheduling-1] c.example.reminder.service.EventService  : Proccessed 1 reminders at 2025-11-25T11:50:28 
-2025-11-25T11:50:32.288+01:00  INFO 60012 --- [reminder] [task-2] c.example.reminder.service.EmailService  : HTML reminder email sent to salimimehdi@yahoo.com
-2025-11-25T11:52:10.071+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Put /api/events/37 -> updated
-2025-11-25T11:52:10.246+01:00  INFO 60012 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T11:55:26.403+01:00  INFO 60012 --- [reminder] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T11:55:26.428+01:00  INFO 60012 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-11-25T11:55:26.443+01:00  INFO 60012 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-11-25T11:55:35.134+01:00  INFO 65328 --- [reminder] [main] c.example.reminder.ReminderApplication   : Starting ReminderApplication using Java 21.0.8 with PID 65328 (C:\Java-Spring\reminder\target\classes started by zhila in C:\Java-Spring\reminder)
-2025-11-25T11:55:35.137+01:00  INFO 65328 --- [reminder] [main] c.example.reminder.ReminderApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-25T11:55:36.635+01:00  INFO 65328 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-25T11:55:36.729+01:00  INFO 65328 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 4 JPA repository interfaces.
-2025-11-25T11:55:38.076+01:00  INFO 65328 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
-2025-11-25T11:55:38.101+01:00  INFO 65328 --- [reminder] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-11-25T11:55:38.102+01:00  INFO 65328 --- [reminder] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2025-11-25T11:55:38.195+01:00  INFO 65328 --- [reminder] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-11-25T11:55:38.195+01:00  INFO 65328 --- [reminder] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2987 ms
-2025-11-25T11:55:38.543+01:00  INFO 65328 --- [reminder] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-25T11:55:38.688+01:00  INFO 65328 --- [reminder] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-11-25T11:55:38.777+01:00  INFO 65328 --- [reminder] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-11-25T11:55:39.373+01:00  INFO 65328 --- [reminder] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-25T11:55:39.430+01:00  INFO 65328 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-25T11:55:39.688+01:00  INFO 65328 --- [reminder] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@194224ca
-2025-11-25T11:55:39.691+01:00  INFO 65328 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-25T11:55:39.773+01:00  WARN 65328 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-25T11:55:39.775+01:00  WARN 65328 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-11-25T11:55:41.227+01:00  INFO 65328 --- [reminder] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-25T11:55:41.391+01:00  INFO 65328 --- [reminder] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T11:55:41.734+01:00  INFO 65328 --- [reminder] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-11-25T11:55:42.961+01:00  INFO 65328 --- [reminder] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-11-25T11:55:42.962+01:00  WARN 65328 --- [reminder] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
-2025-11-25T11:55:43.159+01:00  WARN 65328 --- [reminder] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-25T11:55:44.181+01:00  INFO 65328 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
-2025-11-25T11:55:44.196+01:00  INFO 65328 --- [reminder] [main] c.example.reminder.ReminderApplication   : Started ReminderApplication in 9.927 seconds (process running for 10.802)
-2025-11-25T11:58:13.813+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-11-25T11:58:13.813+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-11-25T11:58:13.815+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2025-11-25T11:58:14.215+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T11:58:17.647+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T11:58:18.936+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T11:58:26.720+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T11:58:36.765+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:00:00.715+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:05:29.815+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:06:07.713+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:09:50.847+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Put /api/events/37 -> updated
-2025-11-25T12:09:51.011+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:12:44.743+01:00  INFO 65328 --- [reminder] [scheduling-1] c.example.reminder.service.EventService  : Proccessed 1 reminders at 2025-11-25T12:12:44 
-2025-11-25T12:12:49.374+01:00  INFO 65328 --- [reminder] [task-1] c.example.reminder.service.EmailService  : HTML reminder email sent to salimimehdi@yahoo.com
-2025-11-25T12:12:58.674+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:13:09.638+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:13:43.732+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Put /api/events/30 -> updated
-2025-11-25T12:13:43.928+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:16:44.831+01:00  INFO 65328 --- [reminder] [scheduling-1] c.example.reminder.service.EventService  : Proccessed 1 reminders at 2025-11-25T12:16:44 
-2025-11-25T12:16:47.866+01:00  INFO 65328 --- [reminder] [task-2] c.example.reminder.service.EmailService  : HTML reminder email sent to publicviewer784@gmail.com
-2025-11-25T12:16:50.859+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:20:41.785+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:22:12.364+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Post /api/events -> created id=38 , title=Mehdi-Test-25-11
-2025-11-25T12:22:16.251+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:22:36.977+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Put /api/events/38 -> updated
-2025-11-25T12:22:37.180+01:00  INFO 65328 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:25:45.007+01:00  INFO 65328 --- [reminder] [scheduling-1] c.example.reminder.service.EventService  : Proccessed 1 reminders at 2025-11-25T12:25:44 
-2025-11-25T12:25:49.165+01:00  INFO 65328 --- [reminder] [task-3] c.example.reminder.service.EmailService  : HTML reminder email sent to salimimehdi@yahoo.com
-2025-11-25T12:28:28.413+01:00  INFO 65328 --- [reminder] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T12:28:28.428+01:00  INFO 65328 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-11-25T12:28:28.433+01:00  INFO 65328 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-11-25T12:28:32.598+01:00  INFO 21620 --- [reminder] [main] c.example.reminder.ReminderApplication   : Starting ReminderApplication using Java 21.0.8 with PID 21620 (C:\Java-Spring\reminder\target\classes started by zhila in C:\Java-Spring\reminder)
-2025-11-25T12:28:32.603+01:00  INFO 21620 --- [reminder] [main] c.example.reminder.ReminderApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-25T12:28:34.495+01:00  INFO 21620 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-25T12:28:34.606+01:00  INFO 21620 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97 ms. Found 4 JPA repository interfaces.
-2025-11-25T12:28:36.255+01:00  INFO 21620 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
-2025-11-25T12:28:36.279+01:00  INFO 21620 --- [reminder] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-11-25T12:28:36.279+01:00  INFO 21620 --- [reminder] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2025-11-25T12:28:36.380+01:00  INFO 21620 --- [reminder] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-11-25T12:28:36.380+01:00  INFO 21620 --- [reminder] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3687 ms
-2025-11-25T12:28:36.711+01:00  INFO 21620 --- [reminder] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-25T12:28:36.837+01:00  INFO 21620 --- [reminder] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-11-25T12:28:36.889+01:00  INFO 21620 --- [reminder] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-11-25T12:28:37.345+01:00  INFO 21620 --- [reminder] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-25T12:28:37.396+01:00  INFO 21620 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-25T12:28:37.612+01:00  INFO 21620 --- [reminder] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@44492c06
-2025-11-25T12:28:37.630+01:00  INFO 21620 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-25T12:28:37.707+01:00  WARN 21620 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-25T12:28:37.714+01:00  WARN 21620 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-11-25T12:28:39.074+01:00  INFO 21620 --- [reminder] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-25T12:28:39.216+01:00  INFO 21620 --- [reminder] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T12:28:39.728+01:00  INFO 21620 --- [reminder] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-11-25T12:28:41.168+01:00  INFO 21620 --- [reminder] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-11-25T12:28:41.168+01:00  WARN 21620 --- [reminder] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
-2025-11-25T12:28:41.384+01:00  WARN 21620 --- [reminder] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-25T12:28:42.553+01:00  INFO 21620 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
-2025-11-25T12:28:42.571+01:00  INFO 21620 --- [reminder] [main] c.example.reminder.ReminderApplication   : Started ReminderApplication in 10.962 seconds (process running for 11.858)
-2025-11-25T12:29:12.030+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-11-25T12:29:12.032+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-11-25T12:29:12.035+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2025-11-25T12:29:12.915+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:30:41.121+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Post /api/events -> created id=39 , title=Mehdi-Test.25112025
-2025-11-25T12:30:44.777+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:33:38.903+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:33:42.841+01:00  INFO 21620 --- [reminder] [scheduling-1] c.example.reminder.service.EventService  : Proccessed 1 reminders at 2025-11-25T12:33:42 
-2025-11-25T12:33:42.889+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:33:45.444+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:33:46.471+01:00  INFO 21620 --- [reminder] [task-1] c.example.reminder.service.EmailService  : HTML reminder email sent to mehdidevops0@gmail.com
-2025-11-25T12:33:47.542+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:33:51.586+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:33:56.255+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:35:13.828+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:36:26.092+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:37:10.224+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Post /api/events -> created id=40 , title=Test-25.11
-2025-11-25T12:37:14.243+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:37:24.885+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:37:26.784+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:37:49.638+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Delete /api/events/40 -> deleted
-2025-11-25T12:37:49.770+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:37:53.249+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:37:54.579+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:37:55.625+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:38:01.098+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:38:37.022+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Post /api/events -> created id=41 , title=Test-25.11Test-25.11Test-2
-2025-11-25T12:38:40.455+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:38:42.213+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:38:42.814+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:42:36.374+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:42:38.178+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:42:38.759+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:42:43.011+01:00  INFO 21620 --- [reminder] [scheduling-1] c.example.reminder.service.EventService  : Proccessed 1 reminders at 2025-11-25T12:42:42 
-2025-11-25T12:42:47.083+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:42:49.110+01:00  INFO 21620 --- [reminder] [task-2] c.example.reminder.service.EmailService  : HTML reminder email sent to publicviewer784@gmail.com
-2025-11-25T12:48:42.498+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:49:18.011+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:50:47.440+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:50:50.835+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:50:55.252+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:50:58.421+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:50:59.635+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:51:05.470+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:51:06.634+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:51:08.171+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:51:10.130+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:51:12.287+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:51:13.859+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:51:37.721+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:51:50.192+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T12:52:23.071+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:00:34.139+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:02:16.826+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:02:39.375+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:02:52.644+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:05:03.831+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:05:05.815+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:05:22.960+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:06:06.776+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:06:53.066+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:19:57.518+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:21:45.989+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:22:51.720+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:22:56.746+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:23:15.890+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:23:18.588+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:23:38.645+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:23:57.643+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:24:30.571+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:25:13.341+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:28:01.285+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:28:31.592+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:29:38.462+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Post /api/events -> created id=42 , title=Mehdi-Test-25-11Mehdi-Test-25-11
-2025-11-25T13:29:42.863+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:29:50.744+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:29:52.891+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:32:43.864+01:00  INFO 21620 --- [reminder] [scheduling-1] c.example.reminder.service.EventService  : Proccessed 1 reminders at 2025-11-25T13:32:43 
-2025-11-25T13:32:46.060+01:00  INFO 21620 --- [reminder] [task-3] c.example.reminder.service.EmailService  : HTML reminder email sent to publicviewer784@gmail.com
-2025-11-25T13:44:45.603+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:44:48.688+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:44:49.185+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:45:02.466+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:45:07.161+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:45:07.693+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:46:04.152+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:46:05.471+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:46:05.889+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:47:03.133+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:47:05.264+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:47:05.830+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:54:55.031+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:54:55.879+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:54:57.435+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:54:57.955+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:57:57.101+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Delete /api/events/42 -> deleted
-2025-11-25T13:57:57.122+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T13:58:04.247+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Delete /api/events/41 -> deleted
-2025-11-25T13:58:04.275+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=2 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:10:58.636+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:11:34.297+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:11:37.627+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Delete /api/events/33 -> deleted
-2025-11-25T14:11:37.646+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:11:42.568+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Delete /api/events/30 -> deleted
-2025-11-25T14:11:42.594+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:11:42.614+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:12:18.752+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:12:59.057+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:13:13.749+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:13:15.589+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:13:23.956+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:13:27.144+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:13:29.204+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:13:32.327+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:13:35.470+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:13:44.963+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:14:44.907+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:14:50.373+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Delete /api/events/29 -> deleted
-2025-11-25T14:14:50.401+01:00  INFO 21620 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
-2025-11-25T14:16:10.174+01:00  INFO 21620 --- [reminder] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-25T14:16:10.208+01:00  INFO 21620 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-11-25T14:16:10.225+01:00  INFO 21620 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-11-26T15:37:29.129+01:00  INFO 58740 --- [reminder] [main] c.example.reminder.ReminderApplication   : Starting ReminderApplication using Java 21.0.8 with PID 58740 (C:\Java-Spring\reminder\target\classes started by zhila in C:\Java-Spring\reminder)
+2025-11-26T15:37:29.191+01:00  INFO 58740 --- [reminder] [main] c.example.reminder.ReminderApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-11-26T15:37:33.673+01:00  INFO 58740 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-26T15:37:34.140+01:00  INFO 58740 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 438 ms. Found 4 JPA repository interfaces.
+2025-11-26T15:37:37.493+01:00  INFO 58740 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-11-26T15:37:37.544+01:00  INFO 58740 --- [reminder] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-26T15:37:37.544+01:00  INFO 58740 --- [reminder] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-11-26T15:37:37.772+01:00  INFO 58740 --- [reminder] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-26T15:37:37.773+01:00  INFO 58740 --- [reminder] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 8330 ms
+2025-11-26T15:37:38.541+01:00  INFO 58740 --- [reminder] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-26T15:37:39.119+01:00  INFO 58740 --- [reminder] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-11-26T15:37:39.307+01:00  INFO 58740 --- [reminder] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-26T15:37:40.439+01:00  INFO 58740 --- [reminder] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-26T15:37:40.546+01:00  INFO 58740 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-26T15:37:41.025+01:00  INFO 58740 --- [reminder] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d8d52be
+2025-11-26T15:37:41.030+01:00  INFO 58740 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-26T15:37:41.228+01:00  WARN 58740 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-26T15:37:41.232+01:00  WARN 58740 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-11-26T15:37:44.203+01:00  INFO 58740 --- [reminder] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-26T15:37:44.961+01:00  INFO 58740 --- [reminder] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-26T15:37:45.761+01:00  INFO 58740 --- [reminder] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-26T15:37:49.004+01:00  INFO 58740 --- [reminder] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-11-26T15:37:49.008+01:00  WARN 58740 --- [reminder] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-11-26T15:37:49.502+01:00  WARN 58740 --- [reminder] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-26T15:37:51.616+01:00  INFO 58740 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-11-26T15:37:51.647+01:00  INFO 58740 --- [reminder] [main] c.example.reminder.ReminderApplication   : Started ReminderApplication in 24.863 seconds (process running for 26.572)
+2025-11-26T15:37:57.696+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-26T15:37:57.696+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-11-26T15:37:57.699+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-11-26T15:37:59.008+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T17:45:46.740+01:00  WARN 58740 --- [reminder] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h59m5s419ms101µs600ns).
+2025-11-26T21:18:59.425+01:00  WARN 58740 --- [reminder] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h33m16s717ms413µs900ns).
+2025-11-26T21:22:33.019+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:24:42.930+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:25:52.291+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-7] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:29:07.608+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-1] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:29:09.665+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:29:13.792+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:40:57.850+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Post /api/events -> created id=43 , title=Test-New-Version
+2025-11-26T21:41:00.393+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:41:02.237+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:43:10.638+01:00  INFO 58740 --- [reminder] [scheduling-1] c.example.reminder.service.EventService  : Proccessed 1 reminders at 2025-11-26T21:43:10 
+2025-11-26T21:43:13.711+01:00  INFO 58740 --- [reminder] [task-1] c.example.reminder.service.EmailService  : HTML reminder email sent to salimimehdi@yahoo.com
+2025-11-26T21:45:13.517+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Put /api/events/43 -> updated
+2025-11-26T21:45:13.653+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:52:32.466+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Put /api/events/43 -> updated
+2025-11-26T21:52:32.606+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:54:15.774+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Put /api/events/43 -> updated
+2025-11-26T21:54:15.896+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T21:58:12.146+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-8] c.e.reminder.controller.EventController  : Put /api/events/43 -> updated
+2025-11-26T21:58:12.271+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:02:58.557+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-10] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:03:14.584+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:03:17.591+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-3] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:03:35.544+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:03:38.620+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=0 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:04:48.865+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:05:03.210+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Put /api/events/43 -> updated
+2025-11-26T22:05:03.329+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:06:31.287+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-6] c.e.reminder.controller.EventController  : Put /api/events/43 -> updated
+2025-11-26T22:06:31.417+01:00  INFO 58740 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:06:59.106+01:00  INFO 58740 --- [reminder] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-26T22:06:59.122+01:00  INFO 58740 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-11-26T22:06:59.130+01:00  INFO 58740 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-11-26T22:07:05.047+01:00  INFO 76020 --- [reminder] [main] c.example.reminder.ReminderApplication   : Starting ReminderApplication using Java 21.0.8 with PID 76020 (C:\Java-Spring\reminder\target\classes started by zhila in C:\Java-Spring\reminder)
+2025-11-26T22:07:05.050+01:00  INFO 76020 --- [reminder] [main] c.example.reminder.ReminderApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-11-26T22:07:06.769+01:00  INFO 76020 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-26T22:07:06.888+01:00  INFO 76020 --- [reminder] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99 ms. Found 4 JPA repository interfaces.
+2025-11-26T22:07:08.175+01:00  INFO 76020 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-11-26T22:07:08.203+01:00  INFO 76020 --- [reminder] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-26T22:07:08.204+01:00  INFO 76020 --- [reminder] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-11-26T22:07:08.442+01:00  INFO 76020 --- [reminder] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-26T22:07:08.443+01:00  INFO 76020 --- [reminder] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3314 ms
+2025-11-26T22:07:09.559+01:00  INFO 76020 --- [reminder] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-26T22:07:09.698+01:00  INFO 76020 --- [reminder] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-11-26T22:07:09.744+01:00  INFO 76020 --- [reminder] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-26T22:07:10.343+01:00  INFO 76020 --- [reminder] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-26T22:07:10.419+01:00  INFO 76020 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-26T22:07:10.685+01:00  INFO 76020 --- [reminder] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@17f8db6
+2025-11-26T22:07:10.687+01:00  INFO 76020 --- [reminder] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-26T22:07:10.759+01:00  WARN 76020 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-26T22:07:10.760+01:00  WARN 76020 --- [reminder] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-11-26T22:07:12.019+01:00  INFO 76020 --- [reminder] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-26T22:07:12.155+01:00  INFO 76020 --- [reminder] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-26T22:07:12.500+01:00  INFO 76020 --- [reminder] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-26T22:07:13.782+01:00  INFO 76020 --- [reminder] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-11-26T22:07:13.784+01:00  WARN 76020 --- [reminder] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-11-26T22:07:13.987+01:00  WARN 76020 --- [reminder] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-26T22:07:14.994+01:00  INFO 76020 --- [reminder] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-11-26T22:07:15.012+01:00  INFO 76020 --- [reminder] [main] c.example.reminder.ReminderApplication   : Started ReminderApplication in 10.862 seconds (process running for 11.534)
+2025-11-26T22:07:15.197+01:00  INFO 76020 --- [reminder] [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-26T22:07:15.197+01:00  INFO 76020 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-11-26T22:07:15.199+01:00  INFO 76020 --- [reminder] [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-11-26T22:08:15.942+01:00  INFO 76020 --- [reminder] [http-nio-9090-exec-4] c.e.reminder.controller.EventController  : Put /api/events/43 -> updated
+2025-11-26T22:08:16.108+01:00  INFO 76020 --- [reminder] [http-nio-9090-exec-2] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:08:53.748+01:00  INFO 76020 --- [reminder] [http-nio-9090-exec-5] c.e.reminder.controller.EventController  : Put /api/events/43 -> updated
+2025-11-26T22:08:53.876+01:00  INFO 76020 --- [reminder] [http-nio-9090-exec-9] c.e.reminder.controller.EventController  : Get /api/events/paged -> page=1 , size=2 , sortBy=id , direction=asc , afterDate=null , search=null
+2025-11-26T22:11:15.284+01:00  INFO 76020 --- [reminder] [scheduling-1] c.example.reminder.service.EventService  : Proccessed 1 reminders at 2025-11-26T22:11:15 
+2025-11-26T22:11:17.803+01:00  INFO 76020 --- [reminder] [task-1] c.example.reminder.service.EmailService  : HTML reminder email sent to salimimehdi@yahoo.com
+2025-11-26T22:13:04.577+01:00  INFO 76020 --- [reminder] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-26T22:13:04.580+01:00  INFO 76020 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-11-26T22:13:04.590+01:00  INFO 76020 --- [reminder] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -50,4 +50,11 @@ public class Event {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    @Enumerated(EnumType.STRING)
+    private  RecurrenceType recurrenceType =  RecurrenceType.NONE;
+
+    private Integer recurrenceInterval;
+
+    private LocalDate recurrenceEndDate;
+
 }

@@ -1,6 +1,7 @@
 package com.example.reminder.dto;
 
 import com.example.reminder.model.Event;
+import com.example.reminder.model.RecurrenceType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,14 @@ public class EventResponse {
                 e.getTitle(),
                 e.getDescription(),
                 e.getEventDate(),
-                e.getReminderTime()
+                e.getReminderTime(),
+                e.getRecurrenceType(),
+                e.getRecurrenceInterval(),
+                e.getRecurrenceEndDate()
         );
     }
+
+    private RecurrenceType recurrenceType;
+    private Integer recurrenceInterval;
+    private LocalDate recurrenceEndDate;
 }
