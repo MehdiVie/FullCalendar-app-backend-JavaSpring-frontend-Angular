@@ -2,6 +2,7 @@ package com.example.reminder.repository;
 
 import com.example.reminder.model.Event;
 import com.example.reminder.model.User;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -108,7 +109,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     @Query("SELECT e from Event e where e.user = :user " +
             " AND e.isException = false AND e.recurrenceType <> 'NONE' AND e.eventDate <= :end " +
-            " AND (e.recurrenceEndDate is null OR e.eventDate > :start ) ")
+            " AND (e.recurrenceEndDate is null OR e.recurrenceEndDate >= :start ) ")
     List<Event> findRecurringMasterAffectingRange(@Param("user") User user
             ,@Param("start") LocalDate start ,@Param("end") LocalDate end);
 
@@ -118,8 +119,28 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findExceptionsInRange(@Param("user") User user
             ,@Param("start") LocalDate start ,@Param("end") LocalDate end);
 
+
     Optional<Event> findByParentEventIdAndOriginalDate(@Param("parentEventId") Long parentEventId,
                                                        @Param("originalDate") LocalDate originalDate);
 
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Event e WHERE e.parentEventId = :masterId " +
+            " AND e.isException = true ")
+    int deleteExceptionsOfMaster(@Param("masterId") Long masterId);
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Event e WHERE e.parentEventId = :masterId " +
+            " AND e.isException = true AND e.originalDate > :originalDate ")
+    int deleteExceptionsForMasterAfter(@Param("masterId") Long masterId,
+                                       @Param("originalDate") LocalDate originalDate);
+
+    @Query("select e from Event e where e.isException = true and e.parentEventId = :parentId and e.originalDate = :date")
+    Event findExceptionByParentAndOriginalDate(Long parentId, LocalDate date);
+
+
+    @Query("select e from Event e where e.isException = false and e.parentEventId = :parentId and e.eventDate = :date")
+    Event findMasterByParent(Long parentId, LocalDate date);
 
 }
