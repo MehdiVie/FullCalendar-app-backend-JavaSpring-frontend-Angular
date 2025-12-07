@@ -94,11 +94,11 @@ public interface EventRepository extends JpaRepository<Event, Long> {
             " e.eventDate >= :from AND e.eventDate <= :to GROUP BY  e.eventDate ORDER BY  e.eventDate")
     List<Object[]> eventsPerDaySince(@Param("from") LocalDate from,@Param("to") LocalDate to);
 
-    @Query("SELECT e FROM Event e where e.user = :user AND" +
+    /*@Query("SELECT e FROM Event e where e.user = :user AND" +
             " e.eventDate between :start AND :end" +
             " order by e.eventDate asc" )
     List<Event> findByUserAndEventDateBetween (@Param("user") User user
-            ,@Param("start") LocalDate start ,@Param("end") LocalDate end);
+            ,@Param("start") LocalDate start ,@Param("end") LocalDate end);*/
 
 
     @Query("SELECT e from Event e where e.user = :user " +
@@ -114,14 +114,19 @@ public interface EventRepository extends JpaRepository<Event, Long> {
             ,@Param("start") LocalDate start ,@Param("end") LocalDate end);
 
     @Query("SELECT e from Event e where e.user = :user " +
+            " AND e.isException = false AND e.recurrenceType <> 'NONE'  " +
+            " AND e.id = :id  ")
+    Event findRecurringMasterAffectingRangeByDate(@Param("user") User user, @Param("id") long id );
+
+    @Query("SELECT e from Event e where e.user = :user " +
             " AND e.isException = true " +
             " AND e.eventDate between :start AND :end ")
     List<Event> findExceptionsInRange(@Param("user") User user
             ,@Param("start") LocalDate start ,@Param("end") LocalDate end);
 
-
+/*
     Optional<Event> findByParentEventIdAndOriginalDate(@Param("parentEventId") Long parentEventId,
-                                                       @Param("originalDate") LocalDate originalDate);
+                                                       @Param("originalDate") LocalDate originalDate);*/
 
     @Modifying
     @Transactional
